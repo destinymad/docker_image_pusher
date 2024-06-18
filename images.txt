@@ -5,3 +5,11 @@ xhofe/alist:latest
 --platform=linux/arm64 xiaoyaliu/alist
 --platform=linux/amd64 redis:7.0.15-alpine3.20
 clickhouse/clickhouse-server
+redis:7.0.4
+mysql:8.0.30
+elasticsearch:7.17.6
+apache/rocketmq:4.9.6
+docker.elastic.co/kibana/kibana:7.17.6
+logstash:7.17.6
+xuxueli/xxl-job-admin:2.3.0
+
