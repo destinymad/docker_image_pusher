@@ -12,4 +12,14 @@ apache/rocketmq:4.9.6
 docker.elastic.co/kibana/kibana:7.17.6
 logstash:7.17.6
 xuxueli/xxl-job-admin:2.3.0
+mysql:8.0
+minio/minio:RELEASE.2021-06-17T00-10-46Z
+redis:6.2
+nacos/nacos-server:v2.2.0-slim
+seataio/seata-server:1.6.1
+elasticsearch:7.17.5
+kibana:7.17.5
+canal/canal-server:v1.1.6
+apache/rocketmq:4.9.4
+apacherocketmq/rocketmq-dashboard:1.0.0
 
