@@ -38,11 +38,15 @@ jobs:
             # 获取镜像名:版本号  例如nginx:1.25.3
             image_name_tag=$(echo "$image" | awk -F'/' '{print $NF}')
             echo "image_name_tag $image_name_tag"
-            # 获取命名空间
-            name_space=$(echo "$image" | awk -F'/' '{if (NF>1) print $1}'| awk '{print $1}')
-            echo "name_space: $name_space"
-            # 这里不要是空值影响判断
-            name_space="${name_space}_"
+           # 获取命名空间
+             name_space=$(echo "$image" | awk -F'/' '{if (NF>1) print $1}'| awk '{print $1}')
+             echo "name_space: $name_space"
+             # 如果镜像名称以curenew开头，则命名空间取第二个字符
+             if [[ "${image}" == curenew/* ]]; then
+               name_space=$(echo "$image" | awk -F'/' '{if (NF>1) print $2}')
+             fi
+             # 这里不要是空值影响判断
+             name_space="${name_space}_"
             # 获取镜像名例如nginx
             image_name=$(echo "$image_name_tag" | awk -F':' '{print $1}')
             
@@ -62,6 +66,15 @@ jobs:
         
         while IFS= read -r line; do
             [[ -z "$line" ]] && continue
+            if [[ "${line}" == /curenew/* ]]; then
+               # 去掉镜像名称前的curenew/
+               image=${line#*curenew/}
+               echo "image $image"
+               line=${line#*curenew/}
+               echo "最终镜像为 image $line"
+             else
+               continue
+             fi
             echo "docker pull $line"
             docker pull $line
             platform=$(echo "$line" | awk -F'--platform[ =]' '{if (NF>1) print $2}' | awk '{print $1}')
