@@ -65,7 +65,7 @@ jobs:
              # 检查镜像名称是否以curenew/开头
              if [[ "${line}" == curenew/* ]]; then
                # 去掉镜像名称前的curenew/
-               image=${line#*/curenew/}
+               image=${line#*curenew/}
                echo "image $image"
              else
                continue
