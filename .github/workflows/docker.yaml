@@ -32,6 +32,10 @@ jobs:
         declare -A temp_map
         while IFS= read -r line; do
             [[ -z "$line" ]] && continue
+            # 检查镜像名称是否以curenew/开头
+            if [[ "${line}" != curenew/* ]]; then
+              continue
+            fi
             # 获取镜像的完整名称，例如kasmweb/nginx:1.25.3（命名空间/镜像名:版本号）
             image=$(echo "$line" | awk '{print $NF}')
             echo "image $image"
