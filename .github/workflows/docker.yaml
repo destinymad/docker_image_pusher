@@ -68,7 +68,7 @@ jobs:
         while IFS= read -r line; do
             [[ -z "$line" ]] && continue
             echo "开始处理docker pull $line"
-            if [[ "${line}" == /curenew/* ]]; then
+            if [[ "${line}" == curenew/* ]]; then
                # 去掉镜像名称前的curenew/
                image=${line#*curenew/}
                echo "image $image"
