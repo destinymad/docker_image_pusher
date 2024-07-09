@@ -62,14 +62,6 @@ jobs:
         
         while IFS= read -r line; do
             [[ -z "$line" ]] && continue
-             # 检查镜像名称是否以curenew/开头
-             if [[ "${line}" == /curenew/* ]]; then
-               # 去掉镜像名称前的curenew/
-               line=${line#*curenew/}
-               echo "最终镜像为 image $line"
-             else
-               continue
-             fi
             echo "docker pull $line"
             docker pull $line
             platform=$(echo "$line" | awk -F'--platform[ =]' '{if (NF>1) print $2}' | awk '{print $1}')
