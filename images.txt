@@ -22,5 +22,5 @@ kibana:7.17.5
 canal/canal-server:v1.1.6
 apache/rocketmq:4.9.4
 apacherocketmq/rocketmq-dashboard:1.0.0
-curenew/seataio/seata-server:1.6.0
+seataio/seata-server:1.6.0
 
